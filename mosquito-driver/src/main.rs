@@ -1,5 +1,6 @@
 #![no_std]
 #![no_main]
+#![cfg(not(test))]
 
 use defmt::*;
 use embassy_executor::Spawner;
@@ -7,8 +8,8 @@ use embassy_stm32::gpio::{Level, Output, Speed};
 use embassy_time::Timer;
 use {defmt_rtt as _, panic_probe as _};
 
-#[embassy_executor::main]
-async fn main(_spawner: Spawner) {
+// #[embassy_executor::main]
+async fn embassy_main(_spawner: Spawner) {
     let p = embassy_stm32::init(Default::default());
     info!("Hello World!");
 
@@ -23,4 +24,11 @@ async fn main(_spawner: Spawner) {
         led.set_low();
         Timer::after_millis(300).await;
     }
+}
+
+#[cortex_m_rt::entry]
+fn main() -> ! {
+    defmt::println!("Hello, world!");
+
+    loop {}
 }
