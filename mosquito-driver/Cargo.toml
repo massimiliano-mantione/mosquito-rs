@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-embassy-stm32 = { version = "0.2.0", features = [ "defmt", "time-driver-any", "stm32g0b1re", "memory-x", "unstable-pac", "exti"]  }
+embassy-stm32 = { version = "0.2.0", features = [ "defmt", "time-driver-any", "stm32g031k8", "memory-x", "unstable-pac", "exti"]  }
 embassy-sync = { version = "0.6.2", features = ["defmt"] }
 embassy-executor = { version = "0.7.0", features = ["arch-cortex-m", "executor-thread", "defmt"] }
 embassy-time = { version = "0.4.0", features = ["defmt", "defmt-timestamp-uptime", "tick-hz-32_768"] }
@@ -15,13 +15,11 @@ defmt = "1.0.1"
 defmt-rtt = "1.0.0"
 
 cortex-m = { version = "0.7.7", features = ["inline-asm", "critical-section-single-core"] }
-#cortex-m = { version = "0.7.7" }
 cortex-m-rt = "0.7.0"
 embedded-hal = "0.2.6"
 panic-probe = { version = "0.3", features = ["print-defmt"] }
 heapless = { version = "0.8", default-features = false }
 portable-atomic = { version = "1.5", features = ["unsafe-assume-single-core"] }
-#portable-atomic = { version = "1.5" }
 
 embedded-io-async = { version = "0.6.1" }
 
